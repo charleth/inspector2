@@ -45,8 +45,8 @@ if(isset($_POST['q'])){
             <div class="reportSectionFirst">
                 <h2>Results</h2>
                 <p>You entered: <?php echo $_POST['q']; ?></p>
-                <?php if(isset($headers))
-                print_r($headers); ?>
+                <!--?php if(isset($headers))
+                print_r($headers); ?-->
             </div>
             <div class="reportSection">
                 <h3>Raw Headers</h3>
@@ -56,11 +56,13 @@ if(isset($_POST['q'])){
                     <th>content</th>
                 </tr>
                 <?php
-                foreach($headers as $h => $h_value) {
+                # $pieces = explode(" ", $headers[1]);
+                foreach($headers as $h) {
+                    $pieces = explode(" ", $h)
                 ?>
                 <tr>
-                    <td><?= $h?></td>
-                    <td><?= $h_value?></td>
+                    <td><?= $pieces[0]?></td>
+                    <td><?= $pieces[1]?></td>
                 </tr>
                 <?php
                 }
